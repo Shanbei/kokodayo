@@ -87,13 +87,7 @@ class Kokodayo extends Koa {
 		this.serverMap.set(port, server);
 	}
 }
-const kokodayo = new Kokodayo({port: 3222});
-const { router } = kokodayo;
-router.get('/ping', async (ctx, next) => {
-	return 'ping ok';
-})
 // const sqlModel = kokodayo.sql('roly', 'mysql://root:pwd@127.0.0.1:3306/database');
 // sqlModel(examples);
 // kokodayo.sqlbind();
-kokodayo.run();
 module.exports = Kokodayo;
