@@ -1,0 +1,22 @@
+{
+  "name": "kokodayo",
+  "version": "1.0.0",
+  "dependencies": {
+    "download": "^8.0.0",
+    "getmac": "^5.20.0",
+    "got": "^12.1.0",
+    "http-proxy": "^1.18.1",
+    "koa": "^2.13.4",
+    "koa-body": "^5.0.0",
+    "koa-bodyparser": "^4.3.0",
+    "koa-connect-history-api-fallback": "^0.3.1",
+    "koa-router": "^10.1.1",
+    "koa-send": "^5.0.1",
+    "koa-sendfile": "^3.0.0",
+    "koa-static": "^5.0.0",
+    "lodash": "^4.17.21",
+    "mariadb": "^3.0.0",
+    "mysql2": "^2.3.3",
+    "sequelize": "^6.20.1"
+  }
+}
