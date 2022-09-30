@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "repository":{
     "type":"git",
-    "url":"https://github.com/Shanbei/kokodayou.git"
+    "url":"https://github.com/Shanbei/kokodayo.git"
   },
   "main": "index.js",
   "keywords": ["koa"],
