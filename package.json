@@ -1,6 +1,14 @@
 {
   "name": "kokodayo",
   "version": "1.0.0",
+  "repository":{
+    "type":"git",
+    "url":"https://github.com/Shanbei/kokodayou.git"
+  },
+  "main": "index.js",
+  "keywords": ["koa"],
+  "author": "lichenyi",
+  "license": "ISC",
   "dependencies": {
     "download": "^8.0.0",
     "getmac": "^5.20.0",
