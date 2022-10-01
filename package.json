@@ -1,12 +1,14 @@
 {
   "name": "kokodayo",
   "version": "1.0.1",
-  "repository":{
-    "type":"git",
-    "url":"https://github.com/Shanbei/kokodayo.git"
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Shanbei/kokodayo.git"
   },
   "main": "index.js",
-  "keywords": ["koa"],
+  "keywords": [
+    "koa"
+  ],
   "author": "lichenyi",
   "license": "ISC",
   "dependencies": {
@@ -25,6 +27,7 @@
     "lodash": "^4.17.21",
     "mariadb": "^3.0.0",
     "mysql2": "^2.3.3",
+    "redis": "^4.3.1",
     "sequelize": "^6.20.1"
   }
 }

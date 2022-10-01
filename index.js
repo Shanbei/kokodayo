@@ -7,6 +7,7 @@ const ctxBind = require('./bin/ctxBind.js');
 const path = require('path');
 const SqlModel = require('./bin/sql');
 const jsonFormat = require('./bin/jsonFormat');
+const Redis = require('./bin/redis');
 class Kokodayo extends Koa {
 	constructor(props) {
 		super();
@@ -15,14 +16,16 @@ class Kokodayo extends Koa {
 			fileLimit: '50mb', // 默认文件上传大小限制
 			port: 3107, // 默认端口
 			history: true, // 是否开启视图历史模式
+			redis: false, // radis配置
 			staticView: '', // 前端静态文件路径
 			log: true, // 日志打开
 			...props,
-		}
-		// this = new Koa();
+		};
 		this.serverMap = new Map();
 		this.sqlModel = new SqlModel();
 		this.koaRouter = new koaRouter();
+		
+		
 		const { fileUpload, fileLimit } = this.config;
 		if (fileUpload && fileLimit) {
 			this.use(koaBody({
@@ -32,7 +35,11 @@ class Kokodayo extends Koa {
 				textLimit: fileLimit,
 			}))
 		}
-		this.use(ctxBind())
+		this.use(ctxBind());
+		if (this.config.redis) {
+			this.redis = new Redis(this.config.redis);
+			this.use(this.redis.redisBind());
+		}
 	}
 	log() {
 		const { log } = this.config;
