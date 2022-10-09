@@ -13,7 +13,7 @@ config = {
     log: 日志是否开启，默认为true
 }
 ## 路由配置 [基于 koa-router]
-const { router } = koko;
+const router = koko.router();
 router.get('/ping', async function (ctx, next) {
     return 'ping ok';
 });
