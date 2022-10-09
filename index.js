@@ -24,8 +24,8 @@ class Kokodayo extends Koa {
 		this.serverMap = new Map();
 		this.sqlModel = new SqlModel();
 		this.koaRouter = new koaRouter();
-		
-		
+
+
 		const { fileUpload, fileLimit } = this.config;
 		if (fileUpload && fileLimit) {
 			this.use(koaBody({
@@ -47,7 +47,7 @@ class Kokodayo extends Koa {
 			console.log.apply(undefined, ['>', ...arguments]);
 		}
 	}
-	get router() {
+	router = () => {
 		const routerFun = ['get', 'post', 'patch', 'delete'];
 		const routerMap = {};
 		routerFun.forEach(key => {
@@ -64,24 +64,24 @@ class Kokodayo extends Koa {
 	sqlbind = () => {
 		this.use(this.sqlModel.build());
 	}
-	close(port) {
+	close = (port) => {
 		if (port === undefined) {
 			const servers = this.serverMap.values();
 			servers.forEach(server => server.close());
 			return;
 		}
-		if (this.serverMap.has(port)){
+		if (this.serverMap.has(port)) {
 			const server = this.serverMap.get(port);
 			server.close();
 			this.serverMap.delete(port);
 			return;
 		}
 	}
-	exit() {
+	exit = () => {
 		this.close();
 		process.exit(0);
 	}
-	run(port = this.config.port) {
+	run = (port = this.config.port) => {
 		const { history, staticView } = this.config;
 		this.use(this.koaRouter.routes())
 		if (staticView !== '') {
