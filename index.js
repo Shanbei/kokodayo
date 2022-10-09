@@ -84,9 +84,10 @@ class Kokodayo extends Koa {
 	run = (port = this.config.port) => {
 		const { history, staticView } = this.config;
 		this.use(this.koaRouter.routes())
+		console.log(path.dirname(__filename));
 		if (staticView !== '') {
 			history && this.use(koaHistory());
-			this.use(koaStatic(path.join(__dirname, staticView)))
+			this.use(koaStatic(staticView))
 		}
 		const server = this.listen(port, () => {
 			this.log(`listen: ${port}`)
