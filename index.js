@@ -47,13 +47,13 @@ class Kokodayo extends Koa {
 			console.log.apply(undefined, ['>', ...arguments]);
 		}
 	}
-	router = () => {
+	router = (group = '') => {
 		const routerFun = ['get', 'post', 'patch', 'delete'];
 		const routerMap = {};
 		routerFun.forEach(key => {
 			routerMap[key] = (path, fun) => {
 				this.log(`router:[${key}]`, path);
-				return this.koaRouter[key](path, jsonFormat(fun))
+				return this.koaRouter[key](`${group}${path}`, jsonFormat(fun))
 			}
 		});
 		return routerMap;

@@ -8,13 +8,12 @@ module.exports = function (func) {
         const resType = typeof res;
         if (resType === 'object' && !Array.isArray(res)) {
             ctx.send(res);
-            await next();
             return;
         }
         ctx.send({
             success: true,
             data: res
         });
-        await next();
+        return;
     }
 }

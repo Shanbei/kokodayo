@@ -38,3 +38,6 @@ const model = (sequelize, DataTypes) => sequelize.define('tableName', {
 	}
   }, {})
 db.model(model)
+
+## version
+1.2.2: Adding a Group Route; Fixed static resource bugs caused by get requests
