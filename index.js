@@ -7,6 +7,7 @@ const ctxBind = require('./bin/ctxBind.js');
 const path = require('path');
 const SqlModel = require('./bin/sql');
 const jsonFormat = require('./bin/jsonFormat');
+const routerBind = require('./bin/routerBind');
 const Redis = require('./bin/redis');
 class Kokodayo extends Koa {
 	constructor(props) {
@@ -47,17 +48,7 @@ class Kokodayo extends Koa {
 			console.log.apply(undefined, ['>', ...arguments]);
 		}
 	}
-	router = (group = '') => {
-		const routerFun = ['get', 'post', 'patch', 'delete'];
-		const routerMap = {};
-		routerFun.forEach(key => {
-			routerMap[key] = (path, fun) => {
-				this.log(`router:[${key}]`, path);
-				return this.koaRouter[key](`${group}${path}`, jsonFormat(fun))
-			}
-		});
-		return routerMap;
-	}
+	router = routerBind.bind(this)
 	sql = (modelName, key) => {
 		return this.sqlModel.create(modelName, key, { logging: this.config.log });
 	}
