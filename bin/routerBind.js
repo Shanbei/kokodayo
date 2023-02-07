@@ -9,7 +9,6 @@ const groupArg = arg => {
 const routerBind = function () {
     const routerFun = ['get', 'post', 'patch', 'delete'];
     const groupPath = groupArg(arguments);
-    console.log(groupArg(arguments));
     const routerMap = { router: routerBind.bind(this, ...arguments) };
     routerFun.forEach(key => {
         routerMap[key] = (path, fun) => {

@@ -16,13 +16,13 @@ class SqlModel {
 	build() {
 		const { sqlMap } = this;
 		const sqlKeys = sqlMap.keys();
+		const sqlModels = {};
+		for (const name of sqlKeys) {
+			const { sequelize, models } = sqlMap.get(name);
+			sequelize.sync({alter: true});
+			sqlModels[name] = models;
+		}
 		return async function (ctx, next) {
-			const sqlModels = {};
-			for (const name of sqlKeys) {
-				const { sequelize, models } = sqlMap.get(name);
-				sequelize.sync();
-				sqlModels[name] = models;
-			}
 			ctx.sql = sqlModels;
 			await next();
 		}
