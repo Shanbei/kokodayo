@@ -8,7 +8,7 @@ config = {
     fileLimit: 文件上传大小限制 默认设置为 '50mb' [基于 koa-body]
     port: 启动端口 默认3107 
     history: 前端静态页面历史模式是否开启vue/react 默认为true，hash模式需要传false [基于 koa-connect-history-api-fallback]
-    redis: radis配置，默认关闭 [基于 redis]
+    redis: redis配置，默认关闭 [基于 redis]
     staticView: 前端静态文件路径 默认为空，不起用前端模板渲染 [基于 koa-static]
     log: 日志是否开启，默认为true
 }

@@ -4,7 +4,6 @@ class Redis {
     constructor(options){
         let config = undefined;
         switch (typeof options) {
-
             case 'object':
                 config = options;
                 break;
@@ -29,6 +28,7 @@ class Redis {
         } catch {
             await this.client.connect();
         }
+        return this.client;
     }
     async getRedis(key) {
         await this.connect();

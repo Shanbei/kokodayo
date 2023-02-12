@@ -17,7 +17,7 @@ class Kokodayo extends Koa {
 			fileLimit: '50mb', // 默认文件上传大小限制
 			port: 3107, // 默认端口
 			history: true, // 是否开启视图历史模式
-			redis: false, // radis配置
+			redis: false, // redis配置
 			staticView: '', // 前端静态文件路径
 			log: true, // 日志打开
 			...props,
